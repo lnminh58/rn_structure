@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 
-import { Image, Button } from '@/components';
+import { Image, Button, Icon } from '@/components';
 import { decreaseCounter, increaseCounter } from '@/store/actions/counter';
 import { APP_COLOR } from '@/styles';
 
@@ -41,6 +41,7 @@ class Home extends PureComponent {
             containerStyle={{ backgroundColor: APP_COLOR.SECONDARY }}
             onPress={() => navigation.navigate('Detail')}
           />
+          <Icon name="camera" />
         </SafeAreaView>
       </>
     );
@@ -51,11 +52,12 @@ export default connect(
   state => ({
     rCounter: state.counter.counter,
   }),
-  dispatch => bindActionCreators(
-    {
-      aIncreaseCounter: increaseCounter,
-      aDecreaseCounter: decreaseCounter,
-    },
-    dispatch,
-  ),
+  dispatch =>
+    bindActionCreators(
+      {
+        aIncreaseCounter: increaseCounter,
+        aDecreaseCounter: decreaseCounter,
+      },
+      dispatch,
+    ),
 )(Home);
